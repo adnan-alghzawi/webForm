@@ -1,0 +1,2 @@
+﻿1,aliroom,library,lg
+1,adnanroom,library,l
