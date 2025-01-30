@@ -6,11 +6,16 @@
     <meta charset="utf-8" />
     <title>Edit Book</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    
 </head>
 <body>
     <form id="form1" runat="server">
         <div class="container mt-5">
      <h2>Edit Book</h2>
+
+            <label>search</label>
+            <asp:TextBox ID="book_id" runat="server" placeholder="Enter book id"></asp:TextBox>
+            <asp:Button ID="button_click" runat="server" Text="search" OnClick="button_click_Click"/>
 
      <!-- Table of books -->
      <h3>Books List</h3>

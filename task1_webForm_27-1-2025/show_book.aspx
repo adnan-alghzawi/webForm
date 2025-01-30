@@ -11,6 +11,14 @@
     <form id="form1" runat="server">
         <div class="container mt-5">
             <h2>Books List</h2>
+            
+            <!-- Search Bar -->
+            <div class="mb-3">
+                <label for="txtSearch" class="form-label">Search by Book ID:</label>
+                <asp:TextBox ID="txtSearch" runat="server" CssClass="form-control" placeholder="Enter Book ID"></asp:TextBox>
+                <asp:Button ID="btnSearch" runat="server" Text="Search" CssClass="btn btn-primary mt-2" OnClick="btnSearch_Click" />
+            </div>
+            
             <table class="table table-bordered">
                 <thead>
                     <tr>
@@ -25,8 +33,6 @@
                 </tbody>
             </table>
         </div>
-                   
-
     </form>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>

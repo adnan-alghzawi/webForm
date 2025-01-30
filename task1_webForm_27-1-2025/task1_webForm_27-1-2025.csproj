@@ -71,12 +71,14 @@
     <Content Include="book_page.aspx" />
     <Content Include="data\adnan.txt" />
     <Content Include="data\book.txt" />
+    <Content Include="data\logged.txt" />
     <Content Include="data\meeting.txt" />
     <Content Include="edit_page.aspx" />
     <Content Include="library_page.aspx" />
     <Content Include="login_page.aspx" />
     <Content Include="meeting.aspx" />
     <Content Include="page1.aspx" />
+    <Content Include="profile.aspx" />
     <Content Include="register_page.aspx" />
     <Content Include="show_book.aspx" />
     <Content Include="user_page.aspx" />
@@ -131,6 +133,13 @@
     </Compile>
     <Compile Include="page1.aspx.designer.cs">
       <DependentUpon>page1.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="profile.aspx.cs">
+      <DependentUpon>profile.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="profile.aspx.designer.cs">
+      <DependentUpon>profile.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="register_page.aspx.cs">

@@ -113,5 +113,38 @@ namespace task1_webForm_27_1_2025
             Response.Redirect("show_book.aspx");
         }
 
+        protected void button_click_Click(object sender, EventArgs e)
+        {
+            string filePath = Server.MapPath("~/data/book.txt");
+            string[] lines = File.ReadAllLines(filePath);
+            bool bookFound = false; // Track if book is found
+
+            foreach (var line in lines)
+            {
+                var data = line.Split(',');
+
+                if (data[0] == book_id.Text) // Check if book ID matches
+                {
+                    // Fill in the fields with book details
+
+                    txtBookId.Text = data[0];
+                    txtBookName.Text = data[1];
+                    txtBookKind.Text = data[2];
+                    txtBookLevel.Text = data[3];
+
+                    bookFound = true;
+
+                    break;
+                }
+            }
+
+            if (!bookFound)
+            {
+                // Show an alert if book is not found
+                Response.Write("<script>alert('Book not found!');</script>");
+            }
+        }
+
+
     }
 }

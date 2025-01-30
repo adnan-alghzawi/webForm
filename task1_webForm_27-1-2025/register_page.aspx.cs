@@ -23,7 +23,8 @@ namespace task1_webForm_27_1_2025
 
                 using (StreamWriter sw=File.CreateText(file))
                 {
-                    sw.WriteLine($"{name.Text} {email.Text} {password.Text} {repeat_password.Text}");
+                    string gender = Male.Checked ? "Male" : "Female";
+                    sw.WriteLine($"{name.Text} {email.Text} {password.Text} {repeat_password.Text} {gender} {dob.Text}");
 
                 }
             }
@@ -31,7 +32,8 @@ namespace task1_webForm_27_1_2025
             {
                 using(StreamWriter sw= new StreamWriter(file,true))
                 {
-                    sw.WriteLine($"{name.Text} {email.Text} {password.Text} {repeat_password.Text}");
+                    string gender = Male.Checked ? "Male" : "Female";
+                    sw.WriteLine($"{name.Text} {email.Text} {password.Text} {repeat_password.Text} {gender} {dob.Text}");
                 }
             }
 

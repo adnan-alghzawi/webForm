@@ -57,6 +57,25 @@
                     </div>
                   </div>
 
+                    <div class="d-flex flex-row align-items-center mb-4">
+    <i class="fas fa-user fa-lg me-3 fa-fw"></i>
+    <div class="form-outline flex-fill mb-0">
+
+        <asp:RadioButton ID="Male" GroupName="Gender" Text="Male" runat="server" />
+        <asp:RadioButton ID="Female" GroupName="Gender" Text="Female" runat="server" />
+        <asp:Label Text="Gender" runat="server"></asp:Label><br />
+    </div>
+</div>
+
+<div class="d-flex flex-row align-items-center mb-4">
+    <i class="fas fa-calendar-alt fa-lg me-3 fa-fw"></i>
+    <div class="form-outline flex-fill mb-0">
+
+        <asp:TextBox ID="dob" runat="server" TextMode="Date"></asp:TextBox>
+        <asp:Label Text="Date of Birth" runat="server"></asp:Label>
+    </div>
+</div>
+
                   <div class="form-check d-flex justify-content-center mb-5">
                     <input class="form-check-input me-2" type="checkbox" value="" id="form2Example3c" />
                     <label class="form-check-label" for="form2Example3">

@@ -19,7 +19,11 @@ namespace task1_webForm_27_1_2025
         {
             string file = Server.MapPath("~/data/adnan.txt");
 
-            if (email_address.Text == "admin@gmail.com" && login_password.Text == "123") { Response.Redirect("admin_page.aspx"); }
+            if (email_address.Text == "admin@gmail.com" && login_password.Text == "123") {
+                string logged = Server.MapPath("~/data/logged.txt");
+                File.WriteAllText(logged , email_address.Text);
+                Response.Redirect("admin_page.aspx");
+            }
 
             string[]users= File.ReadAllLines(file); //["user1","user2","user3",....] array of objects
             foreach (string user in users) {
@@ -27,8 +31,13 @@ namespace task1_webForm_27_1_2025
                 
 
                 string[]userData= user.Split(' ');
-                if (email_address.Text == userData[1] && login_password.Text == userData[2]) { Response.Redirect("library_page.aspx"); }
+                if (email_address.Text == userData[1] && login_password.Text == userData[2]) {
+                    string logged = Server.MapPath("~/data/logged.txt");
+                    File.WriteAllText(logged, email_address.Text);
+
+                    Response.Redirect("library_page.aspx"); }
             }
-        }
+            
+        }   
     }
 }

@@ -1,58 +1,56 @@
 ﻿using System;
 using System.IO;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.UI;
-using System.Web.UI.WebControls;
 
 namespace task1_webForm_27_1_2025
 {
-    public partial class show_book : System.Web.UI.Page
+    public partial class show_book : Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            // المسار إلى ملف الكتب
-            string filePath = Server.MapPath("~/data/book.txt");
+            if (!IsPostBack)
+            {
+                LoadBooks();
+            }
+        }
 
-            // التحقق إذا كان الملف موجودًا
+        private void LoadBooks(string searchId = null)
+        {
+            string filePath = Server.MapPath("~/data/book.txt");
+            booksTableBody.InnerHtml = "";
+
             if (File.Exists(filePath))
             {
-                // قراءة البيانات من الملف
                 string[] lines = File.ReadAllLines(filePath);
+                bool bookFound = false;
 
-                // التحقق من أن هناك بيانات في الملف
-                if (lines.Length > 0)
+                foreach (var line in lines)
                 {
-                    foreach (var line in lines)
-                    {
-                        // تقسيم البيانات باستخدام الفاصل (نفترض أن البيانات مفصولة بفواصل)
-                        string[] bookData = line.Split(',');
+                    string[] bookData = line.Split(',');
+                    if (bookData.Length < 4) continue;
 
-                        // إضافة الصفوف إلى الجدول
+                    if (string.IsNullOrEmpty(searchId) || bookData[0] == searchId)
+                    {
                         string rowHtml = $"<tr><td>{bookData[0]}</td><td>{bookData[1]}</td><td>{bookData[2]}</td><td>{bookData[3]}</td></tr>";
                         booksTableBody.InnerHtml += rowHtml;
+                        bookFound = true;
                     }
                 }
-                else
+
+                if (!bookFound)
                 {
-                    // إذا كان الملف فارغًا
-                    booksTableBody.InnerHtml = "<tr><td colspan='4'>No books available.</td></tr>";
+                    booksTableBody.InnerHtml = "<tr><td colspan='4'>No matching book found.</td></tr>";
                 }
             }
             else
             {
-                // إذا كان الملف غير موجود
                 booksTableBody.InnerHtml = "<tr><td colspan='4'>No books available.</td></tr>";
             }
-
         }
 
-
-
-        protected void btnGoHome_Click(object sender, EventArgs e)
+        protected void btnSearch_Click(object sender, EventArgs e)
         {
-            Response.Redirect("home.aspx");
+            LoadBooks(txtSearch.Text.Trim());
         }
     }
 }
